@@ -1,7 +1,7 @@
 {
   "package": {
     "name": "@lotos2021/php-tests",
-    "version": "0.0.11"
+    "version": "0.0.12"
   },
   "data": [
     {
@@ -28,7 +28,7 @@
     {
       "package": {
         "dependencyId": 1,
-        "containValue": "dockerSupportsPhp"
+        "containValue": "dockerSupportsPHP"
       },
       "id": 4
     },
