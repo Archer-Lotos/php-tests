@@ -1,34 +1,34 @@
 {
   "package": {
     "name": "@lotos2021/php-tests",
-    "version": "0.0.6"
+    "version": "0.0.11"
   },
   "data": [
     {
       "package": {
         "dependencyId": 0,
-        "containValue": "SyncTextFile"
+        "containValue": "Type"
       },
       "id": 1
     },
     {
       "package": {
         "dependencyId": 0,
-        "containValue": "Handler"
+        "containValue": "SyncTextFile"
       },
       "id": 2
     },
     {
       "package": {
-        "dependencyId": 1,
-        "containValue": "dockerSupportsPhp"
+        "dependencyId": 0,
+        "containValue": "Handler"
       },
       "id": 3
     },
     {
       "package": {
-        "dependencyId": 0,
-        "containValue": "Type"
+        "dependencyId": 1,
+        "containValue": "dockerSupportsPhp"
       },
       "id": 4
     },
@@ -40,28 +40,40 @@
       "id": 5
     },
     {
+      "id": "TestRun",
+      "type": 1
+    },
+    {
       "id": "phpRuntimeErrorCode1",
-      "type": 1,
+      "type": 2,
       "value": {
-        "value": "function fn($args) {\n    $deep = $args['deep'];\n   return $deep.insert(1);\n}"
+        "value": "function fn($args) {\n  $deep = $args['deep'];\n  return $deep.insert(1);\n}"
       }
     },
     {
+      "id": "phpRuntimeErrorHandler1",
+      "type": 3,
+      "from": 4,
+      "to": "phpRuntimeErrorCode1"
+    },
+    {
+      "id": "phpRuntimeErrorHandleInsert1",
+      "type": 5,
+      "from": "TestRun",
+      "to": "phpRuntimeErrorHandler1"
+    },
+    {
       "id": "phpSelectResolveCode2",
-      "type": 1,
+      "type": 2,
       "value": {
-        "value": "function fn($args) {\n    $deep = $args['deep'];\n    return $deep.select(1);\n}"
+        "value": "function fn($args) {\n  $deep = $args['deep'];\n  return $deep.select(1);\n}"
       }
     },
     {
       "id": "phpSelectResolveHandler2",
-      "type": 2,
-      "from": 3,
+      "type": 3,
+      "from": 4,
       "to": "phpSelectResolveCode2"
-    },
-    {
-      "id": "TestRun",
-      "type": 4
     },
     {
       "id": "phpSelectResolveHandleInsert2",
@@ -71,15 +83,15 @@
     },
     {
       "id": "phpResolveCode1",
-      "type": 1,
+      "type": 2,
       "value": {
-        "value": "function fn($args) {\n  return 897;\n}"
+        "value": "function fn($args) {\n    $data = $args['data'];\n    $deep = $args['deep'];\n    $result = sprintf(\"Processed data: %s, deep: %s\", $data, $deep);\n    return $result;\n}"
       }
     },
     {
       "id": "phpResolveHandler1",
-      "type": 2,
-      "from": 3,
+      "type": 3,
+      "from": 4,
       "to": "phpResolveCode1"
     },
     {
@@ -90,15 +102,15 @@
     },
     {
       "id": "phpCompileTimeErrorCode1",
-      "type": 1,
+      "type": 2,
       "value": {
-        "value": "function fn($args) {\n    $deep = $args['deep'];\n   return $deep.select(tt1);\n}"
+        "value": "function fn($args) {\n  $deep = $args['deep']\n  return $deep.insert(1)\n}"
       }
     },
     {
       "id": "phpCompileTimeErrorHandler1",
-      "type": 2,
-      "from": 3,
+      "type": 3,
+      "from": 4,
       "to": "phpCompileTimeErrorCode1"
     },
     {
@@ -106,18 +118,6 @@
       "type": 5,
       "from": "TestRun",
       "to": "phpCompileTimeErrorHandler1"
-    },
-    {
-      "id": "phpRuntimeErrorHandler1",
-      "type": 2,
-      "from": 3,
-      "to": "phpRuntimeErrorCode1"
-    },
-    {
-      "id": "phpRuntimeErrorHandleInsert1",
-      "type": 5,
-      "from": "TestRun",
-      "to": "phpRuntimeErrorHandler1"
     }
   ],
   "errors": [],
