@@ -1,20 +1,20 @@
 {
   "package": {
     "name": "@lotos2021/php-tests",
-    "version": "0.0.12"
+    "version": "0.0.22"
   },
   "data": [
     {
       "package": {
         "dependencyId": 0,
-        "containValue": "Type"
+        "containValue": "SyncTextFile"
       },
       "id": 1
     },
     {
       "package": {
         "dependencyId": 0,
-        "containValue": "SyncTextFile"
+        "containValue": "Type"
       },
       "id": 2
     },
@@ -40,14 +40,21 @@
       "id": 5
     },
     {
+      "id": "phpCompileTimeErrorCode1",
+      "type": 1,
+      "value": {
+        "value": "function fn($args, $deep) {\n  return $deep->insert(1)\n}"
+      }
+    },
+    {
       "id": "TestRun",
-      "type": 1
+      "type": 2
     },
     {
       "id": "phpRuntimeErrorCode1",
-      "type": 2,
+      "type": 1,
       "value": {
-        "value": "function fn($args) {\n  $deep = $args['deep'];\n  return $deep.insert(1);\n}"
+        "value": "function fn($args, $deep) {\n  return $deep->insert(1);\n}"
       }
     },
     {
@@ -64,9 +71,9 @@
     },
     {
       "id": "phpSelectResolveCode2",
-      "type": 2,
+      "type": 1,
       "value": {
-        "value": "function fn($args) {\n  $deep = $args['deep'];\n  return $deep.select(1);\n}"
+        "value": "function fn($args, $deep) {\n  return $deep->select(1);\n}"
       }
     },
     {
@@ -83,9 +90,9 @@
     },
     {
       "id": "phpResolveCode1",
-      "type": 2,
+      "type": 1,
       "value": {
-        "value": "function fn($args) {\n    $data = $args['data'];\n    $deep = $args['deep'];\n    $result = sprintf(\"Processed data: %s, deep: %s\", $data, $deep);\n    return $result;\n}"
+        "value": "function fn($data, $deep) {\n    $result = sprintf(\"Processed data: %s, deep: %s\", print_r($data), print_r($deep));\n    return $result;\n}"
       }
     },
     {
@@ -99,13 +106,6 @@
       "type": 5,
       "from": "TestRun",
       "to": "phpResolveHandler1"
-    },
-    {
-      "id": "phpCompileTimeErrorCode1",
-      "type": 2,
-      "value": {
-        "value": "function fn($args) {\n  $deep = $args['deep']\n  return $deep.insert(1)\n}"
-      }
     },
     {
       "id": "phpCompileTimeErrorHandler1",

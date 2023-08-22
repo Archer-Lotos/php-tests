@@ -2,9 +2,9 @@
   "name": "@lotos2021/php-tests",
   "dependencies": {
     "@deep-foundation/core": "^0.0.2",
-    "@lotos2021/php-docker-isolation-provider": "0.0.2"
+    "@lotos2021/php-docker-isolation-provider": "^0.0.2"
   },
-  "version": "0.0.12",
+  "version": "0.0.22",
   "keywords": [
     "deep-package"
   ]
